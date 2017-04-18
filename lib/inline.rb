@@ -579,6 +579,7 @@ VALUE #{method}_equals(VALUE value) {
 
           windoze = WINDOZE and RUBY_PLATFORM =~ /mswin/
           sane = ! windoze
+          Config::CONFIG['CFLAGS'].slice! "-fno-tree-dce"
           cmd = [ RbConfig::CONFIG['LDSHARED'],
                   flags,
                   (RbConfig::CONFIG['DLDFLAGS']         if sane),
